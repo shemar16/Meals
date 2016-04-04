@@ -18,11 +18,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         Button ok = (Button)findViewById(R.id.button);
+        Button cancel = (Button)findViewById(R.id.button2);
         setSupportActionBar(toolbar);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v,"Ok button clicked",Snackbar.LENGTH_LONG).setAction("Action",null).show();
+                Snackbar.make(v, "Ok button clicked", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v,"Cancel button clicked",Snackbar.LENGTH_LONG).setAction("Action",null).show();
             }
         });
 
