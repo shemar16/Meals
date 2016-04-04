@@ -1,31 +1,31 @@
-language:android
+language: android
 android:
-components:
--build-tools-23.0.1
--android-23
--android-21
--add-on
--extra
--platform-tools
--tools
--extra-google-googleplayservices
--extra-google-m2repository
--extra-android-m2repository
--addon-google_apis-google-19
--sys-img-armeabi-v7a-android-21
+    components:
+        -build-tools-23.0.1
+        -android-23
+        -android-21
+        -add-on
+        -extra
+        -platform-tools
+        -tools
+        -extra-google-googleplayservices
+        -extra-google-m2repository
+        -extra-android-m2repository
+        -addon-google_apis-google-19
+        -sys-img-armeabi-v7a-android-21
 deploy:
-provider:releases
-apikey:$GITHUB_KEY
-file: app/build/outputs/apk/app-release.apk
-skip_cleanup: true
-on:
-tags: true
+    provider: releases
+    apikey: $github_key
+    file: app/build/outputs/apk/app-release.apk
+    skip_cleanup: true
+    on:
+        tags: true
 notifications:
-email:
-recipients:
--myemail@address.com
-onsuccess: always
-onfailure: always
+    email:
+        recipients:
+        -pappadam14@gmail.com
+        onsuccess: always
+        onfailure: always
 
 script: ./gradlew:app:build:app:connectedDebugAndroidTest
 
@@ -33,7 +33,7 @@ env:
 global:-MALLOC_ARENA_MAX=2
 sudo: required
 before_script:
--echo no | android create avd--force-n test-t android-21--abi armeabi-v7a-s "768x1280"
--emulator-avd test-no-skin-no-audio-no-window &
+-echo no | android create avd --force -n test -t android-21--abi armeabi-v7a -s "768x1280"
+-emulator -avd test -no-skin -no-audio -no-window &
 -adb wait-for-device
 -adb shell input keyevent 82 &
