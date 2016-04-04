@@ -27,7 +27,7 @@ notifications:
         onsuccess: always
         onfailure: always
 
-script: ./gradlew :app:build :app:connectedDebugAndroidTest
+script: ./gradlew :app:build
 
 env:
     global:
