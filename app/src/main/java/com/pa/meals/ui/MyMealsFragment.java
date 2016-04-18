@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.pa.meals.R;
+
 
 public class MyMealsFragment extends Fragment {
 

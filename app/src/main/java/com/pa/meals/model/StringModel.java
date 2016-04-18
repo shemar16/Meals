@@ -1,8 +1,5 @@
 package com.pa.meals.model;
 
-/**
- * Created by mobsoft on 2016. 04. 18..
- */
 public class StringModel {
 
     private int idx = 0;

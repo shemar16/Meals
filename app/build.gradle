@@ -19,6 +19,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        mock  {
+            applicationId "com.pa.meals.mock"
+            //buildConfigField 'String', 'HOST', '"mock"'
+        }
+
+        orm {
+            applicationId "com.pa.meals.orm"
+            //buildConfigField 'String', 'HOST', '"orm"'
+        }
+    }
 }
 
 dependencies {
@@ -33,4 +44,13 @@ dependencies {
     compile 'com.google.dagger:dagger:2.0.1'
     apt "com.google.dagger:dagger-compiler:2.0.1"
     provided 'javax.annotation:jsr250-api:1.0'
+
+    //SugarORM
+    compile 'com.github.satyan:sugar:1.4'
+
+    //Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }

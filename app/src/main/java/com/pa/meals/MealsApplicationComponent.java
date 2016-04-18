@@ -10,9 +10,6 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 
-/**
- * Created by mobsoft on 2016. 04. 18..
- */
 @Singleton
 @Component(modules = {ViewModule.class, InteractorModule.class, ModelModule.class})
 public interface MealsApplicationComponent {
