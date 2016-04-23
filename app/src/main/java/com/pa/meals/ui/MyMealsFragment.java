@@ -13,6 +13,8 @@ import com.pa.meals.R;
 
 public class MyMealsFragment extends Fragment {
 
+    public static final String ARG_FRAGMENT_NUMBER = "fragment_number";
+
     public MyMealsFragment() {
         // Required empty public constructor
     }
@@ -21,7 +23,11 @@ public class MyMealsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_my_meals, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_my_meals, container, false);
+
+        return rootView;
+
+
     }
 
 

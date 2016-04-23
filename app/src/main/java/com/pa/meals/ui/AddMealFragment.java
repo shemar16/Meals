@@ -11,6 +11,8 @@ import com.pa.meals.R;
 
 public class AddMealFragment extends Fragment {
 
+    public static final String ARG_FRAGMENT_NUMBER = "fragment_number";
+
     public AddMealFragment() {
         // Required empty public constructor
     }
@@ -18,8 +20,9 @@ public class AddMealFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_add_meal, container, false);
 
-        return inflater.inflate(R.layout.fragment_add_meal, container, false);
+        return rootView;
     }
 
 }
