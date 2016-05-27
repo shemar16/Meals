@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
+
         // [START shared_tracker]
         // Obtain the shared Tracker instance.
         MealsApplication application = (MealsApplication) getApplication();
@@ -87,22 +90,27 @@ public class MainActivity extends AppCompatActivity {
         {
 
             /** Called when a drawer has settled in a completely closed state. */
-           /* public void onDrawerClosed(View view) {
+            public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 getSupportActionBar().setTitle(mTitle);
 
-            }*/
+            }
 
             /** Called when a drawer has settled in a completely open state. */
-           /* public void onDrawerOpened(View drawerView) {
+            public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle(mDrawerTitle);
-            }*/
+            }
         };
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
     }
+
+    public void forceCrash(View view) {
+        throw new RuntimeException("This is a crash");
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -127,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        if(id == R.id.action_crash){
+           return  true;
         }
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;

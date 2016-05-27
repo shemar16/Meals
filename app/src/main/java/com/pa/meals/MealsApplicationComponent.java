@@ -1,7 +1,6 @@
 package com.pa.meals;
 
 import com.pa.meals.interactor.InteractorModule;
-import com.pa.meals.interactor.StringInteractor;
 import com.pa.meals.model.ModelModule;
 import com.pa.meals.presenter.MainPresenter;
 import com.pa.meals.view.ViewModule;
@@ -18,5 +17,5 @@ public interface MealsApplicationComponent {
 
     void inject(MainPresenter mainPresenter);
 
-    void inject(StringInteractor stringInteractor);
+
 }
