@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "233534772574",
+    "project_id": "meals-dc0dd"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233534772574:android:cb2850a02ec6ba21",
+        "android_client_info": {
+          "package_name": "com.pa.meals.mock"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn2eKCu7V3SmAel6R9cw2BwOpUP4XA9oo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-78432547-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

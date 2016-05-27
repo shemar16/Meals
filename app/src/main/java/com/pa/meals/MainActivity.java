@@ -15,11 +15,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.crashlytics.android.Crashlytics;
 import com.pa.meals.ui.AddMealFragment;
 import com.pa.meals.ui.ListMyMealsFragment;
 import com.pa.meals.ui.MyMealsFragment;
+import io.fabric.sdk.android.Fabric;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     private String[] mNavigationDrawerItemTitles;
     private DrawerLayout mDrawerLayout;
@@ -30,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     // used to store app title
     private CharSequence mTitle;
 
+    private Tracker mTracker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,9 +47,16 @@ public class MainActivity extends AppCompatActivity {
         m.save();*/
 
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // [START shared_tracker]
+        // Obtain the shared Tracker instance.
+        MealsApplication application = (MealsApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+        // [END shared_tracker]
 
         // for proper titles
         mTitle = mDrawerTitle = getTitle();
@@ -71,17 +87,17 @@ public class MainActivity extends AppCompatActivity {
         {
 
             /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
+           /* public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 getSupportActionBar().setTitle(mTitle);
 
-            }
+            }*/
 
             /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
+           /* public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle(mDrawerTitle);
-            }
+            }*/
         };
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -139,12 +155,30 @@ public class MainActivity extends AppCompatActivity {
         switch (position) {
             case 0:
                 fragment = new MyMealsFragment();
+                // [START custom_event]
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Action")
+                        .setAction("Share")
+                        .build());
+                // [END custom_event]
                 break;
             case 1:
                 fragment = new ListMyMealsFragment();
+                // [START custom_event]
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Action")
+                        .setAction("Share")
+                        .build());
+                // [END custom_event]
                 break;
             case 2:
                 fragment = new AddMealFragment();
+                // [START custom_event]
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Action")
+                        .setAction("Share")
+                        .build());
+                // [END custom_event]
                 break;
 
             default:
@@ -172,6 +206,14 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+    @Override
+    public void onResume(){
+        String name = "MAIN";
+        super.onResume();
+        Log.i(TAG, "Setting screen name: " + name);
+        mTracker.setScreenName("Image~" + name);
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 }
 
